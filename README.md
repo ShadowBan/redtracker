@@ -1,4 +1,0 @@
-redtracker
-==========
-
-arena net tracker
