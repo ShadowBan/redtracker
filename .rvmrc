@@ -1,0 +1,2 @@
+echo "1.9.3@redtracker"
+rvm 1.9.3@redtracker --create

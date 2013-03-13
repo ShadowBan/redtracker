@@ -1,0 +1,28 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: redtracker
+  pool: 5
+  username: chris
+  password:
+
+
+
+
+# development:
+#   adapter: mysql2
+#   database: dindin
+#   username: root
+#   password:
+#   host: localhost
+#   encoding: utf8
+#   socket: /var/run/mysqld/mysqld.sock
+
+# production:
+#   adapter: mysql2
+#   database: dindin
+#   username: root
+#   password: 
+#   host: localhost
+#   encoding: utf8
+
