@@ -4,6 +4,8 @@
     =link_to post.title, post.link, :target=>"_blank"
   .large-10.columns.full-width
     %p= raw post.description
+  .large-2.columns.full-width
+    = post.published_at
     /
       %ul.inline-list
         %li
