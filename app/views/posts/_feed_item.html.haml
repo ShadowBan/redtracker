@@ -1,0 +1,24 @@
+/ Feed Entry
+.row
+  .large-2.columns.small-3
+    =link_to post.title, post.link, :target=>"_blank"
+  .large-10.columns.full-width
+    %p= raw post.description
+    /
+      %ul.inline-list
+        %li
+          %a{:href => ""} Reply
+        %li
+          %a{:href => ""} Share
+      %h6 2 Comments
+      .row
+        .large-2.columns.small-3
+          %img{:src => "http://placehold.it/50x50&text=[img]"}/
+        .large-10.columns
+          %p Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit
+      .row
+        .large-2.columns.small-3
+          %img{:src => "http://placehold.it/50x50&text=[img]"}/
+        .large-10.columns
+          %p Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit
+/ End Feed Entry
