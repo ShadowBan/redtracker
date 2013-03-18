@@ -10,6 +10,9 @@ gem 'devise'
 
 gem 'nokogiri'
 
+gem 'squeel', '= 1.0.9' #any higher will break rocket_tag
+gem "rocket_tag"
+
 group :development do
   gem "better_errors"
   gem "binding_of_caller"

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @dev.name
+%p
+  %b Username:
+  = @dev.username
+
+= link_to 'Edit', edit_dev_path(@dev)
+\|
+= link_to 'Back', devs_path

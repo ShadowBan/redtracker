@@ -1,0 +1,21 @@
+%h1 Listing devs
+
+%table
+  %tr
+    %th Name
+    %th Username
+    %th
+    %th
+    %th
+
+  - @devs.each do |dev|
+    %tr
+      %td= dev.name
+      %td= dev.username
+      %td= link_to 'Show', dev
+      %td= link_to 'Edit', edit_dev_path(dev)
+      %td= link_to 'Destroy', dev, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Dev', new_dev_path

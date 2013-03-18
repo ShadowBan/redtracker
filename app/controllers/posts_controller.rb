@@ -2,7 +2,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.order("published_at desc").all
+    @posts = Post.order("published_at desc")
+    @posts = @posts.tagged_with([params[:category]], :on=>:categories) if params[:category]
+    @categories = Post.get_tags 'categories'
 
     respond_to do |format|
       format.html # index.html.erb

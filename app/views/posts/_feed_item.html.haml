@@ -1,11 +1,13 @@
 / Feed Entry
 .row
   .large-2.columns.small-3
-    =link_to post.title, post.link, :target=>"_blank"
+    =link_to raw(post.title), post.link, :target=>"_blank"
   .large-10.columns.full-width
     %p= raw post.description
-  .large-2.columns.full-width
+  .large-5.columns
     = post.published_at
+  .large-5.columns
+    = post.categories.join(",")
     /
       %ul.inline-list
         %li

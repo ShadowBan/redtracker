@@ -1,5 +1,6 @@
 .row
-  / This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens
+  =render :partial => "categories_sidebar", :locals=>{:categories=>@categories}
+  /Main List
   .large-6.columns
     - @posts.each do |post|
       =render :partial => "feed_item", :locals=>{:post=>post}
