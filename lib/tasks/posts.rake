@@ -9,10 +9,12 @@ namespace :posts do
     end
   end
 
-  task :add_devs => :environment do
+  task :add_categories => :environment do
     pp = Post.all
     pp.each do |p|
       if p.categories.empty? 
+        p.dev = Dev.find_or_create(self.description)
+        p.description.gsub!(/^(.*) said\: /i,"")
         p.add_categories_from_link!
         p.save!
       end
