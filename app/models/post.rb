@@ -28,6 +28,6 @@ class Post < ActiveRecord::Base
     puts "adding aditional information before create"
     puts "==============================================="
     self.dev = Dev.find_or_create(self.description)
-    self.description.gsub!(/^(.*) said\: /i,"")
+    self.description = self.description.gsub(/^(.*) said\: /i,"")
   end
 end
