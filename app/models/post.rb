@@ -17,8 +17,8 @@ class Post < ActiveRecord::Base
     self.categories << "spvp" if link.split("/")[(4..-3)] == ["pvp","pvp"]
   end
 
-  def self.get_tags context
-    ActiveRecord::Base.connection.execute("select distinct name from taggings join tags on tags.id = taggings.tag_id where context='#{context}' and taggable_type='Post';").collect{|t| t["name"]}
+  def self.get_tags context=nil
+    ActiveRecord::Base.connection.execute("select distinct name from taggings join tags on tags.id = taggings.tag_id where taggable_type='Post'#{"AND context='#{context}'" if context};").collect{|t| t["name"]}
   end
 
   private
@@ -29,6 +29,5 @@ class Post < ActiveRecord::Base
     puts "==============================================="
     self.dev = Dev.find_or_create(self.description)
     self.description.gsub!(/^(.*) said\: /i,"")
-    #add_tags_from_link
   end
 end

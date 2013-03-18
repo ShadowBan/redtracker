@@ -11,7 +11,11 @@ namespace :posts do
 
   task :add_devs => :environment do
     pp = Post.all
-    pp.each{|p| p}
+    pp.each do |p|
+      if p.categories.empty? 
+        p.add_categories_from_link!
+        p.save!
+      end
   end
 end
 
