@@ -18,6 +18,7 @@ namespace :posts do
         p.add_categories_from_link!
         p.save!
       end
+    end
   end
 end
 
