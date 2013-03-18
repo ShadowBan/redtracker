@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 
-#gem 'mysql2'
+gem 'zurb-foundation','~>4.0.0'
+gem 'compass'
+
 gem 'pg'
 gem 'haml-rails'
 

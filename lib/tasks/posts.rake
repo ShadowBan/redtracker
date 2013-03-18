@@ -14,7 +14,7 @@ namespace :posts do
     pp.each do |p|
       if p.categories.empty? 
         p.dev = Dev.find_or_create(p.description)
-        p.description.gsub!(/^(.*) said\: /i,"")
+        p.description = p.description.gsub!(/^(.*) said\: /i,"")
         p.add_categories_from_link!
         p.save!
       end
