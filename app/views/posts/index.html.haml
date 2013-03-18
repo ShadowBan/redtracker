@@ -1,7 +1,7 @@
 .row
   =render :partial => "categories_sidebar", :locals=>{:categories=>@categories}
   /Main List
-  .large-6.columns
+  .large-9.columns
     - @posts.each do |post|
       =render :partial => "feed_item", :locals=>{:post=>post}
       -unless post == @posts.last

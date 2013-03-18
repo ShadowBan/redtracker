@@ -1,15 +1,16 @@
 / Header and Nav
 %nav.top-bar
-  %ul
+  %ul.title-area
     %li.name
       %h1
         %a{:href => "/"}
           RedTracker
-  %section
+  %section.top-bar-section
     / Left Nav Section
     %ul.left
     / Right Nav Section
     %ul.right
+      %li.divider
       %li
         =link_to "GW2 Dev Tracker", "https://forum-en.guildwars2.com/forum/info/devtracker", :target=>"_blank"
 / End Header and Nav
