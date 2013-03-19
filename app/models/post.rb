@@ -27,8 +27,9 @@ class Post < ActiveRecord::Base
     agent = Mechanize.new
     post_id = self.link.scan(/[^\/]+\/?$/).first
     feed = agent.get self.link
-    self.description = feed.search("#post#{post_id} .message-content").first.inner_html 
-    self.dev = Dev.find_or_create(feed.search("#post#{post_id} .post-header .member.arenanet a").first.text,feed.search("#post#{post_id} .post-header .member.arenanet a").first["href"])
+    self.description = feed.search("#post#{post_id} .message-content").first.inner_html
+    dev_name = feed.search("#post#{post_id} .post-header a.member.arenanet").first 
+    self.dev = Dev.find_or_create(dev_name.text,dev_name["href"])
   end
 
   def self.get_tags context=nil
