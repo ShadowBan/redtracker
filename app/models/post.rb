@@ -28,7 +28,7 @@ class Post < ActiveRecord::Base
     post_id = self.link.scan(/[^\/]+\/?$/).first
     feed = agent.get self.link
     self.description = feed.search("#post#{post_id} .message-content").first.inner_html 
-    self.dev = Dev.find_or_create(feed.search("#post#{post_id} .post-header a").first.text)
+    self.dev = Dev.find_or_create(feed.search("#post#{post_id} .post-header .member.arenanet a").first.text,feed.search("#post#{post_id} .post-header .member.arenanet a").first["href"])
   end
 
   def self.get_tags context=nil
