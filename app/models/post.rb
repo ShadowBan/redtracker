@@ -1,8 +1,6 @@
 class Post < ActiveRecord::Base
   attr_accessible :description, :link, :title, :published_at, :dev_id
   attr_taggable :categories
-  
-  before_create :parse_additional_info
 
   belongs_to :dev
 
