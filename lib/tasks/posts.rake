@@ -14,10 +14,9 @@ namespace :posts do
   end
 
   task :clean_data => :environment do
-    pp = Post.all
+    pp = Post.where("dev_id is null").all
     pp.each do |p|
       puts p.link
-      p.get_first_post!
       p.get_post_description!
       p.save!
     end

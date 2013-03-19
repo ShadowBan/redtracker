@@ -21,8 +21,8 @@ class Post < ActiveRecord::Base
     agent = Mechanize.new
     link = self.link.gsub(/[^\/]+\/?$/,"")
     feed = agent.get link
-    self.fp_username = feed.search('.post .post-header a').first.text rescue nil
-    self.fp_description = feed.search('.post .post-body .message-content').first.inner_html rescue nil
+    self.fp_username = feed.search('.post .post-header a').first.text
+    self.fp_description = feed.search('.post .post-body .message-content').first.inner_html
   end
 
   def get_post_description!
@@ -30,6 +30,7 @@ class Post < ActiveRecord::Base
     post_id = self.link.scan(/[^\/]+\/?$/).first
     feed = agent.get self.link
     self.description = feed.search("#post#{post_id} .message-content").first.inner_html rescue nil
+    self.dev = Dev.find_or_create(feed.search('#post#{post_id} .post-header a').first.text) rescue nil
   end
 
   def self.get_tags context=nil
@@ -38,11 +39,4 @@ class Post < ActiveRecord::Base
 
   private
 
-  def parse_additional_info
-    puts "==============================================="
-    puts "adding aditional information before create"
-    puts "==============================================="
-    self.dev = Dev.find_or_create(self.description)
-    #self.description = self.description.gsub(/^(.*) said\: /i,"")
-  end
 end
