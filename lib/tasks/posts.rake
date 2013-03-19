@@ -16,6 +16,7 @@ namespace :posts do
   task :clean_data => :environment do
     pp = Post.all
     pp.each do |p|
+      puts p.link
       p.get_first_post!
       p.get_post_description!
       p.save!
