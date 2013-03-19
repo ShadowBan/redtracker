@@ -10,8 +10,8 @@ gem 'haml-rails'
 
 gem 'devise'
 
-gem 'nokogiri'
-
+#gem 'nokogiri'
+gem 'mechanize'
 gem 'squeel', '= 1.0.9' #any higher will break rocket_tag
 gem "rocket_tag"
 

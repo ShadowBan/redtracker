@@ -3,21 +3,22 @@ namespace :posts do
     rss = Rss.new("https://forum-en.guildwars2.com/forum/info/devtracker.rss")
     newest_post = Post.newest.first
     rss.items.each do |i|
-      p = Post.new(:title=>i.title,:description=>i.description,:link=>i.link,:published_at=>i.created_at) if newest_post.nil? || newest_post.published_at < i.created_at 
-      p.add_categories_from_link!
-      p.save!
+      if newest_post.nil? || newest_post.published_at < i.created_at 
+        p = Post.new(:title=>i.title,:link=>i.link,:published_at=>i.created_at) 
+        p.get_post_description!
+        p.add_categories_from_link!
+        p.get_first_post!
+        p.save!
+      end
     end
   end
 
-  task :add_categories => :environment do
+  task :clean_data => :environment do
     pp = Post.all
     pp.each do |p|
-      if p.categories.empty? 
-        p.dev = Dev.find_or_create(p.description)
-        p.description = p.description.gsub!(/^(.*) said\: /i,"")
-        p.add_categories_from_link!
-        p.save!
-      end
+      p.get_first_post!
+      p.get_post_description!
+      p.save!
     end
   end
 end
