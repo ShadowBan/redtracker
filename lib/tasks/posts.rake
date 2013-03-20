@@ -4,7 +4,8 @@ namespace :posts do
     newest_post = Post.newest.first
     rss.items.each do |i|
       if newest_post.nil? || newest_post.published_at < i.created_at 
-        p = Post.new(:title=>i.title,:link=>i.link,:published_at=>i.created_at) 
+        p = Post.new(:title=>i.title,:link=>i.link,:published_at=>i.created_at)
+        puts p.link 
         p.get_post_description!
         p.add_categories_from_link!
         p.get_first_post!

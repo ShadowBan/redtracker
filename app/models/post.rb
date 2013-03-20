@@ -21,14 +21,15 @@ class Post < ActiveRecord::Base
     link = self.link.gsub(/[^\/]+\/?$/,"")
     feed = agent.get link
     self.fp_username = feed.search('.post .post-header a.member').first.text
-    self.fp_description = feed.search('.post .post-body .message-content').first.inner_html
+    description = 
+    self.fp_description = fix_links(feed.search('.post .post-body .message-content').first).inner_html
   end
 
   def get_post_description!
     agent = Mechanize.new
     post_id = self.link.scan(/[^\/]+\/?$/).first
     feed = agent.get self.link
-    self.description = feed.search("#post#{post_id} .message-content").first.inner_html
+    self.description = fix_links(feed.search("#post#{post_id} .message-content").first).inner_html
     dev_name = feed.search("#post#{post_id} .post-header a.member").first 
     self.dev = Dev.find_or_create(dev_name.text,dev_name["href"])
   end
@@ -38,5 +39,8 @@ class Post < ActiveRecord::Base
   end
 
   private
-
+  def fix_links nokonode
+    nokonode.css("@href,@src").each{|l| l.value="https://forum-en.guildwars2.com"+l.value unless l.value =~ /https?:\/\//i}
+    nokonode
+  end
 end
