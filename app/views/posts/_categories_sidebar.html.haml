@@ -1,11 +1,8 @@
-/ Nav Sidebar
-/ This is source ordered to be pulled to the left on larger screens
-.large-3.columns
-  .panel
-    %h5
-      %bold Categories
-    .section-container.vertical-nav{"data-options" => "deep_linking: false; one_up: true", "data-section" => ""}
-      -categories.each do |category|
-        %section.section
-          %h5.title
-            %a{:href => root_path({:category=>category})}= category
+.panel
+  %h5
+    %bold Categories
+  .section-container.vertical-nav{"data-options" => "deep_linking: false; one_up: true", "data-section" => ""}
+    -categories.each do |category|
+      %section.section
+        %h5.title
+          %a{:href => root_path({:category=>category})}= category

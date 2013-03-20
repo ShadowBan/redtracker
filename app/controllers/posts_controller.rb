@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.order("published_at desc")
+    @posts = @posts.search_for(params[:q])
     @posts = @posts.tagged_with([params[:category]], :on=>:categories) if params[:category]
     @posts = @posts.where(:dev_id=>params[:dev]) if params[:dev]
     @categories = Post.get_tags 'categories'

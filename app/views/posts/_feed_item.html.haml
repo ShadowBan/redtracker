@@ -7,6 +7,9 @@
       =link_to post.dev.name, root_path(:dev=>post.dev.id)
 
   .large-12.columns
+    %p= raw post.fp_description
+
+  .large-12.columns
     %p= raw post.description
   .large-6.columns
     = post.published_at

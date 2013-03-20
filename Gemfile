@@ -14,6 +14,7 @@ gem 'devise'
 gem 'mechanize'
 gem 'squeel', '= 1.0.9' #any higher will break rocket_tag
 gem "rocket_tag"
+gem 'scoped_search'
 
 group :development do
   gem "better_errors"

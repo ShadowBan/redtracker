@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   attr_accessible :description, :link, :title, :published_at, :dev_id
   attr_taggable :categories
+  searchable_on :title,:description,:fp_description
 
   belongs_to :dev
 
@@ -19,7 +20,7 @@ class Post < ActiveRecord::Base
     agent = Mechanize.new
     link = self.link.gsub(/[^\/]+\/?$/,"")
     feed = agent.get link
-    self.fp_username = feed.search('.post .post-header a').first.text
+    self.fp_username = feed.search('.post .post-header a.member').first.text
     self.fp_description = feed.search('.post .post-body .message-content').first.inner_html
   end
 
@@ -28,7 +29,7 @@ class Post < ActiveRecord::Base
     post_id = self.link.scan(/[^\/]+\/?$/).first
     feed = agent.get self.link
     self.description = feed.search("#post#{post_id} .message-content").first.inner_html
-    dev_name = feed.search("#post#{post_id} .post-header a.member.arenanet").first 
+    dev_name = feed.search("#post#{post_id} .post-header a.member").first 
     self.dev = Dev.find_or_create(dev_name.text,dev_name["href"])
   end
 
