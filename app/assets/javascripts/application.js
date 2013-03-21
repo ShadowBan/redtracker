@@ -11,8 +11,8 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery_ujs
 //= require foundation/foundation
+//= require posts
 
 
 $(document).foundation();

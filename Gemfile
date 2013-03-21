@@ -3,12 +3,13 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 
 gem 'zurb-foundation','~>4.0.0'
-gem 'compass'
+gem 'jquery-ui-rails'
 
 gem 'pg'
 gem 'haml-rails'
 
 gem 'devise'
+
 
 #gem 'nokogiri'
 gem 'mechanize'
