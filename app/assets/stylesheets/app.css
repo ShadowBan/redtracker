@@ -1,0 +1,11 @@
+#stream .post{
+  background-color:#D1D1D1;
+  padding-top:10px;
+  padding-bottom:10px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+
+#stream .post .description{
+
+}
