@@ -2,7 +2,11 @@ Redtracker::Application.routes.draw do
   root :to => "posts#index"
 
   resources :devs
-  resources :posts
+  resources :posts do
+    member do
+      get "first_post"
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

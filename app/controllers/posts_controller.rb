@@ -84,4 +84,13 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def first_post
+    @post = Post.find(params[:id])
+    render :text=>@post.fp_description
+    # respond_to do |format|
+    #   format.json { head @post }
+    #   format.js {render :text=>@post.fp_description}
+    # end
+  end
 end

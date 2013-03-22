@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require foundation/foundation
+//= require app
 //= require posts
 
 
