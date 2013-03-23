@@ -74,6 +74,9 @@ GEM
       jquery-rails
       railties (>= 3.1.0)
     json (1.7.7)
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     libv8 (3.11.8.13)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -178,6 +181,7 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   jquery-ui-rails
+  kaminari
   mechanize
   pg
   rails (= 3.2.3)

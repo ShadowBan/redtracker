@@ -9,7 +9,4 @@
     =render :partial => "categories_sidebar", :locals=>{:categories=>@categories}
   /Main List
   .large-9.columns#stream
-    - @posts.each do |post|
-      =render :partial => "feed_item", :locals=>{:post=>post}
-      -unless post == @posts.last
-        %hr
+    =render :partial => "stream", :locals=>{:posts=>@posts}

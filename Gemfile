@@ -9,7 +9,7 @@ gem 'pg'
 gem 'haml-rails'
 
 gem 'devise'
-
+gem 'kaminari'
 
 #gem 'nokogiri'
 gem 'mechanize'

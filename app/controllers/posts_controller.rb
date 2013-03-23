@@ -6,11 +6,13 @@ class PostsController < ApplicationController
     @posts = @posts.search_for(params[:q])
     @posts = @posts.tagged_with([params[:category]], :on=>:categories) if params[:category]
     @posts = @posts.where(:dev_id=>params[:dev]) if params[:dev]
+    @posts = @posts.page(params[:page]).per(25)
     @categories = Post.get_tags 'categories'
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
+      format.js {render :partial => "stream", :locals=>{:posts=>@posts}}
     end
   end
 

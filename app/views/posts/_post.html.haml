@@ -1,0 +1,22 @@
+/ Feed Entry
+.row.post{:id=>"post-#{post.id}"}
+  .large-9.columns.small-9.title
+    %h5
+      =link_to raw(post.title), post.link, :target=>"_blank"
+  .large-3.columns.small-3.dev-name
+    -if post.dev
+      %h5
+        =link_to post.dev.name, root_path(:dev=>post.dev.id)
+
+  .large-12.columns.fp-post
+    = link_to "Click to Show First Post", first_post_post_path(post)
+
+  .large-12.columns.description
+    %p= raw post.description
+  .large-4.columns.utc-date
+    = post.published_at
+  .large-8.columns.categories
+    = post.categories.join(",")
+
+%hr
+/ End Feed Entry

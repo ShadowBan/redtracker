@@ -9,3 +9,7 @@
 #stream .post .description{
 
 }
+
+#stream .post .dev-name{
+  float:right;
+}
