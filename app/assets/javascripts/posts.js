@@ -1,6 +1,31 @@
-$.each($('.utc-date'),timeZoneDates);
+//Run on Load
+prepPosts();
 
-$('.fp-post a').click(function(e){
+$(window).scroll(function(){if($(window).scrollTop() == $(document).height() - $(window).height()){getMorePosts();}});
+
+//Function Declarations
+function prepPosts(){
+  $.each($('.utc-date'),timeZoneDates);
+  $('.fp-post a').click(getFirstPost);
+}
+
+function getMorePosts(){
+  var $loadmore = $('#load-more')
+  if ( $loadmore.length ){
+    $.ajax({
+      url: $loadmore.children('a').attr("href"),
+      data: {},
+      type: 'GET',
+      dataType: 'script',
+      complete: function(data,status,jqXHR) {
+        $loadmore.replaceWith(data.responseText);
+        prepPosts();
+      }
+    });
+  }
+}
+
+function getFirstPost(){
   var $link = $(this);
   $.ajax({
     url: $link.attr("href"),
@@ -12,27 +37,7 @@ $('.fp-post a').click(function(e){
     }
   });
   return false;
-})
-
-$(window).scroll(function()
-{
-  if($(window).scrollTop() == $(document).height() - $(window).height())
-  {
-    var $loadmore = $('#load-more')
-    if ( $loadmore.length ){
-      $.ajax({
-        url: $loadmore.children('a').attr("href"),
-        data: {},
-        type: 'GET',
-        dataType: 'script',
-        complete: function(data,status,jqXHR) {
-          $loadmore.replaceWith(data.responseText);
-          $.each($('.utc-date'),timeZoneDates);
-        }
-      });
-    }
-  }
-});
+}
 
 function timeZoneDates(){
   var date = new Date($(this).text());
