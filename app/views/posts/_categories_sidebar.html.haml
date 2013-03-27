@@ -1,8 +1,20 @@
-.panel
-  %h5
-    %bold Categories
-  .section-container.vertical-nav{"data-options" => "deep_linking: false; one_up: true", "data-section" => ""}
-    -categories.each do |category|
-      %section.section
-        %h5.title
-          %a{:href => root_path({:category=>category})}= category
+.large-3.columns
+  =form_tag root_path do
+    =text_field_tag "q", params[:q]
+    =submit_tag "Search"
+
+    .panel#side-nav
+      %h5
+        %bold Categories
+      %ul#categories
+        -CATEGORIES.get_categories.each do |root|
+          %li
+            =label_tag root.tag,root.title, {:class=>(category_on?(params['categories'],root.tag) ? "on" : "off")}
+            =check_box_tag "categories[]", root.tag,category_on?(params['categories'],root.tag),{:id=>root.tag,:class=>"category root hidden"}
+            %ul.subcategories
+              -root.children.each do |child|
+                %li
+                  =label_tag child.tag,child.title,{:class=>(category_on?(params['categories'],child.tag) ? "on" : "off")}
+                  =check_box_tag "categories[]", child.tag, category_on?(params['categories'],child.tag),{:id=>child.tag,:class=>"category child hidden"}
+          -unless CATEGORIES.get_categories.last == root 
+            %hr

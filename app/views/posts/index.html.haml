@@ -1,12 +1,7 @@
 .row
   / Nav Sidebar
   / This is source ordered to be pulled to the left on larger screens
-  .large-3.columns
-    =form_tag root_path do
-      =text_field_tag "q", params[:q]
-      =submit_tag "Search"
-
-    =render :partial => "categories_sidebar", :locals=>{:categories=>@categories}
+  =render :partial => "categories_sidebar"
   /Main List
   .large-9.columns#stream
     =render :partial => "stream", :locals=>{:posts=>@posts}

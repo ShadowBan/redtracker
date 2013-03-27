@@ -21,7 +21,6 @@ class Post < ActiveRecord::Base
     link = self.link.gsub(/[^\/]+\/?$/,"")
     feed = agent.get link
     self.fp_username = feed.search('.post .post-header a.member').first.text
-    description = 
     self.fp_description = fix_links(feed.search('.post .post-body .message-content').first).inner_html
   end
 

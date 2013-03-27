@@ -14,6 +14,7 @@
 //= require foundation/foundation
 //= require app
 //= require posts
+//= require search
 
 
 $(document).foundation();

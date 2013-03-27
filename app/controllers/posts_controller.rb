@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.order("published_at desc")
     @posts = @posts.search_for(params[:q])
-    @posts = @posts.tagged_with([params[:category]], :on=>:categories) if params[:category]
+    @posts = @posts.tagged_with([params[:categories]], :min=>2, :on=>:categories) if params[:categories]
     @posts = @posts.where(:dev_id=>params[:dev]) if params[:dev]
     @posts = @posts.page(params[:page]).per(25)
     @categories = Post.get_tags 'categories'
