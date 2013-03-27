@@ -2,12 +2,8 @@
     display:none;
 }
 
-.on{
-    color:green;
-}
-
 .off{
-    color:red;
+    color:red !important;
     text-decoration:line-through;
 }
 
@@ -31,6 +27,11 @@ ul#categories, ul.subcategories{
     list-style-type: none;
     border:none;
 }
+
+ul#categories li label, ul.subcategories li label{
+    color:green;
+}
+
 
 div#side-nav{
     padding:.25em;

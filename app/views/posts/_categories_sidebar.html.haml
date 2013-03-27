@@ -9,12 +9,12 @@
       %ul#categories
         -CATEGORIES.get_categories.each do |root|
           %li
-            =label_tag root.tag,root.title, {:class=>(category_on?(params['categories'],root.tag) ? "on" : "off")}
+            =label_tag root.tag,root.title, {:class=>("off" unless category_on?(params['categories'],root.tag))}
             =check_box_tag "categories[]", root.tag,category_on?(params['categories'],root.tag),{:id=>root.tag,:class=>"category root hidden"}
             %ul.subcategories
               -root.children.each do |child|
                 %li
-                  =label_tag child.tag,child.title,{:class=>(category_on?(params['categories'],child.tag) ? "on" : "off")}
+                  =label_tag child.tag,child.title,{:class=>("off" unless category_on?(params['categories'],child.tag))}
                   =check_box_tag "categories[]", child.tag, category_on?(params['categories'],child.tag),{:id=>child.tag,:class=>"category child hidden"}
           -unless CATEGORIES.get_categories.last == root 
             %hr
