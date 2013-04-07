@@ -1,0 +1,8 @@
+This is a little app that I wrote to track dev posts on the Guild Wars 2 forums.
+
+It grabs information including the first post in a thread and what boards it was posted in.
+
+There is a layer of filtering and searching put on top of it as well to better string together information they are posting.
+
+Check it out live:
+<a href="http://www.devchaser.com> www.devchaser.com </a>
