@@ -36,3 +36,7 @@ ul#categories li label, ul.subcategories li label{
 div#side-nav{
     padding:.25em;
 }
+
+.description ul{
+  padding-left:10px;
+}
