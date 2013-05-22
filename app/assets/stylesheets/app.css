@@ -37,6 +37,6 @@ div#side-nav{
     padding:.25em;
 }
 
-.description ul{
+.description ul, .description ol{
   padding-left:10px;
 }
