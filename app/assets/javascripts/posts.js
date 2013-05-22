@@ -1,12 +1,12 @@
 //Run on Load
 prepPosts();
+$("#stream").delegate(".fp-post a","click", getFirstPost);
 
 $(window).scroll(function(){if($(window).scrollTop() == $(document).height() - $(window).height()){getMorePosts();}});
 
 //Function Declarations
 function prepPosts(){
   $.each($('.utc-date'),timeZoneDates);
-  $('.fp-post a').click(getFirstPost);
 }
 
 function getMorePosts(){
@@ -44,4 +44,6 @@ function timeZoneDates(){
   $(this).html(getNicerDate(date) + " at " + getNiceTime(date));
   $(this).removeClass("utc-date").addClass("tzdate");
 }
+
+
 
