@@ -1,6 +1,6 @@
 namespace :posts do
   task :get_guildwars_dev_tracker => :environment do
-    Post.delete_all("DATE(published_at) < #{Date.today - 180.days}")
+    Post.delete_all("DATE(published_at) < '#{Date.today - 180.days}'")
     rss = Rss.new("https://forum-en.guildwars2.com/forum/info/devtracker.rss")
     newest_post = Post.newest.first
     rss.items.each do |i|
